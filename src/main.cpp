@@ -2,7 +2,7 @@
 
 extern int NUM_THREADS = 8 ;
 
-#include "pdts.h"
+#include "sample.h"
 
 int main(){
 
