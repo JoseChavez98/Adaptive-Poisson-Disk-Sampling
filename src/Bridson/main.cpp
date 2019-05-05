@@ -18,12 +18,13 @@ float generateRandomNumber(int, int);
 
 #include "sample.h"
 
-#define TRY_LIMITS 10000
+#define TRY_LIMITS 30
 
 void printGrid(std::pair<Sample, bool>, int);
 
 int main()
 {
+  int samples = 0;
   std::vector<Sample> active_list;
 
   float block_size = R / sqrt(2);
@@ -46,6 +47,7 @@ int main()
   int i = SAMPLE.first.getCoordinates().first / block_size;
   int j = SAMPLE.first.getCoordinates().second / block_size;
   grid[i + j * cols] = SAMPLE;
+  samples++;
   active_list.push_back(SAMPLE.first);
 
   while (!active_list.empty())
@@ -95,6 +97,7 @@ int main()
           new_pair.first = new_sample;
           new_pair.second = true;
           grid[col + row * cols] = new_pair;
+          samples++;
           active_list.push_back(new_sample);
         }
       }
@@ -105,6 +108,7 @@ int main()
     }
   }
 
+  std::cout << samples << '\n';
   for (int i = 0; i < cols * rows; i++)
   {
     if (grid[i].second)
