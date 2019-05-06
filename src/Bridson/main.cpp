@@ -73,9 +73,9 @@ int main()
         {
           for (int j = -1; j <= 1; j++)
           {
-            if (grid[i + j * cols].second)
+            if (grid[(col+k) + (row+j) * cols].second)
             {
-              int position = (col + i) + (row + j) * cols;
+              int position = (col + k) + (row + j) * cols;
               if (position >= 0 && position < cols * rows)
               {
                 Sample neighbor = grid[position].first;
